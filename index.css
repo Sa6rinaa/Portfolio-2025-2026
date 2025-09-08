@@ -780,3 +780,353 @@ body {
         animation: none;
     }
 }
+/* Section Compétences - Portfolio CSS (basé sur votre style) */
+
+.section-competences {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+}
+
+.section-competences::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+/* En-tête de la section */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient, linear-gradient(135deg, #000000 0%, #333333 100%));
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #555;
+    margin-top: 20px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+/* Grille des compétences */
+.competences-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+/* Cartes de compétence */
+.competence-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    transition: var(--transition, all 0.3s ease);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.competence-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.competence-card:hover::before {
+    left: 100%;
+}
+
+.competence-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Icône de compétence */
+.competence-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+}
+
+.competence-card:hover .competence-icon {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+}
+
+/* Titre de compétence */
+.competence-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.competence-card:hover .competence-title {
+    color: #1a252f;
+}
+
+.competence-title::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 40px;
+    height: 2px;
+    background: var(--gradient, linear-gradient(135deg, #000000 0%, #333333 100%));
+    border-radius: 1px;
+    transition: transform 0.3s ease;
+}
+
+.competence-card:hover .competence-title::before {
+    transform: translateX(-50%) scaleX(1);
+}
+
+/* Description de compétence */
+.competence-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.competence-card:hover .competence-description {
+    color: #333;
+}
+
+/* Animations spécifiques par technologie */
+.competence-card#html:hover {
+    box-shadow: 0 20px 40px rgba(233, 76, 29, 0.15);
+    border-color: rgba(233, 76, 29, 0.2);
+}
+
+.competence-card#css:hover {
+    box-shadow: 0 20px 40px rgba(41, 101, 241, 0.15);
+    border-color: rgba(41, 101, 241, 0.2);
+}
+
+.competence-card#javascript:hover {
+    box-shadow: 0 20px 40px rgba(247, 223, 30, 0.15);
+    border-color: rgba(247, 223, 30, 0.2);
+}
+
+.competence-card#php:hover {
+    box-shadow: 0 20px 40px rgba(119, 123, 180, 0.15);
+    border-color: rgba(119, 123, 180, 0.2);
+}
+
+.competence-card#mysql:hover {
+    box-shadow: 0 20px 40px rgba(0, 117, 143, 0.15);
+    border-color: rgba(0, 117, 143, 0.2);
+}
+
+.competence-card#react:hover {
+    box-shadow: 0 20px 40px rgba(97, 218, 251, 0.15);
+    border-color: rgba(97, 218, 251, 0.2);
+}
+
+.competence-card#python:hover {
+    box-shadow: 0 20px 40px rgba(255, 212, 59, 0.15);
+    border-color: rgba(255, 212, 59, 0.2);
+}
+
+.competence-card#linux:hover {
+    box-shadow: 0 20px 40px rgba(255, 193, 7, 0.15);
+    border-color: rgba(255, 193, 7, 0.2);
+}
+
+.competence-card#git:hover {
+    box-shadow: 0 20px 40px rgba(240, 81, 51, 0.15);
+    border-color: rgba(240, 81, 51, 0.2);
+}
+
+/* Animation d'apparition progressive */
+.competence-card:nth-child(1) { animation-delay: 0.1s; }
+.competence-card:nth-child(2) { animation-delay: 0.2s; }
+.competence-card:nth-child(3) { animation-delay: 0.3s; }
+.competence-card:nth-child(4) { animation-delay: 0.4s; }
+.competence-card:nth-child(5) { animation-delay: 0.5s; }
+.competence-card:nth-child(6) { animation-delay: 0.6s; }
+.competence-card:nth-child(7) { animation-delay: 0.7s; }
+.competence-card:nth-child(8) { animation-delay: 0.8s; }
+.competence-card:nth-child(9) { animation-delay: 0.9s; }
+
+/* Animation fadeInUp */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-competences {
+        padding: 60px 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    .competences-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .competence-card {
+        padding: 25px 20px;
+    }
+    
+    .competence-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .competence-title {
+        font-size: 1.3rem;
+    }
+    
+    .competence-description {
+        font-size: 0.9rem;
+    }
+    
+    .competence-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .competences-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .competence-card {
+        padding: 20px 15px;
+        border-radius: 15px;
+    }
+    
+    .competence-card:hover {
+        transform: translateY(-3px);
+    }
+    
+    .competence-title::before {
+        width: 30px;
+    }
+}
+
+/* Accessibilité - réduction des animations si demandée */
+@media (prefers-reduced-motion: reduce) {
+    .competence-card {
+        animation: none !important;
+        opacity: 1 !important;
+    }
+    
+    .competence-card::before {
+        display: none;
+    }
+    
+    .competence-card:hover {
+        transform: none;
+    }
+    
+    .competence-card:hover .competence-icon {
+        transform: none;
+    }
+}
+
+/* Effet de particules subtil (adapté à votre style) */
+.section-competences::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(44, 62, 80, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(44, 62, 80, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 40% 40%, rgba(44, 62, 80, 0.05) 0%, transparent 40%);
+    pointer-events: none;
+    animation: float 20s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-3px) rotate(0.3deg); }
+    66% { transform: translateY(2px) rotate(-0.3deg); }
+}
+
+@media (max-width: 768px) {
+    .section-competences::after {
+        animation: none;
+        opacity: 0.3;
+    }
+}
