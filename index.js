@@ -1,23 +1,37 @@
-const carousel = document.querySelector('.projets-grid');
-let isDown = false, startX, scrollLeft;
+      // Fonction pour faire défiler les projets
+        function scrollProjects(distance) {
+            const grid = document.querySelector('.projets-grid');
+            grid.scrollBy({
+                left: distance,
+                behavior: 'smooth'
+            });
+        }
 
-// Scroll with mouse drag
-carousel.addEventListener('mousedown', (e) => {
-    isDown = true;
-    startX = e.pageX - carousel.offsetLeft;
-    scrollLeft = carousel.scrollLeft;
-});
-carousel.addEventListener('mouseleave', () => isDown = false);
-carousel.addEventListener('mouseup', () => isDown = false);
-carousel.addEventListener('mousemove', (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - carousel.offsetLeft;
-    const walk = (x - startX) * 2;
-    carousel.scrollLeft = scrollLeft - walk;
-});
+        // Fonction pour ouvrir le modal
+        function openModal(projectId) {
+            const modal = document.getElementById('modal-' + projectId);
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
 
-// Arrow Buttons
-function scrollProjects(amount) {
-    carousel.scrollBy({ left: amount, behavior: "smooth" });
-}
+        // Fonction pour fermer le modal
+        function closeModal(event, projectId) {
+            event.stopPropagation();
+            const modal = document.getElementById('modal-' + projectId);
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Fermer avec la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+        });
